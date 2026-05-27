@@ -140,6 +140,7 @@ const labels: Record<string, string> = { coffee: "White Coffee", cereal: "Cereal
         if (match) shown++;
       });
       if (noResults) noResults.hidden = shown !== 0;
+      window.dispatchEvent(new Event("resize"));
     });
   });
 </script>
