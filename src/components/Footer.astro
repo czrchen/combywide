@@ -1,0 +1,94 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="brand">
+        <img class="brand-mark" src="/images/logo.png" alt="Combywide" width="150" height="73" />
+      </a>
+      <p>Premix white coffee &amp; cereal beverages, made in Ipoh, Perak since 1995 — as fresh as our coffee.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Shopee">Shopee</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="/">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/products">Products</a>
+      <a href="/contact">Contact</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Our Range</h4>
+      <a href="/products">White Coffee</a>
+      <a href="/products">Cappuccino &amp; Mocha</a>
+      <a href="/products">Cereal Drinks</a>
+      <a href="/products">Milk Tea</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <p class="muted">7, Persiaran Perusahaan Kledang Utara 1/3, Taman Perindustrian Chandan Raya, 31450 Menglembu, Ipoh, Perak</p>
+      <a href="tel:+60528 21271">+605-282 1271</a>
+      <a href="mailto:enquiry@combywide.com">enquiry@combywide.com</a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© {year} Combywide Marketing Sdn Bhd · Co. No. 199501013497 (342698-K)</span>
+    <span>Ipoh, Perak, Malaysia</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    background: var(--navy);
+    color: #E4D6C4;
+    margin-top: 110px;
+    padding: 70px 0 30px;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr 1fr 1.4fr;
+    gap: 40px;
+  }
+  .brand { display: inline-flex; align-items: center; gap: 13px; margin-bottom: 18px; background: #fff; padding: 10px 14px; border-radius: 12px; }
+  .brand-mark { height: 46px; width: auto; object-fit: contain; }
+  .footer-brand p { color: #BBA48C; max-width: 320px; font-size: .95rem; line-height: 1.6; }
+
+  .socials { display: flex; gap: 18px; margin-top: 22px; }
+  .socials a {
+    font-size: .88rem; font-weight: 500; color: #BBA48C;
+    transition: color .2s ease;
+  }
+  .socials a:hover { color: var(--gold); }
+
+  .footer-col h4 {
+    font-family: var(--font-display); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+    margin-bottom: 18px; color: #9C8870;
+  }
+  .footer-col a { display: block; color: #E4D6C4; padding: 6px 0; font-size: .95rem; transition: color .18s ease; }
+  .footer-col a:hover { color: #fff; }
+  .footer-col .muted { color: #BBA48C; margin-bottom: 14px; font-size: .95rem; line-height: 1.6; }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    margin-top: 54px; padding-top: 26px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    color: #9C8870; font-size: .86rem;
+  }
+
+  @media (max-width: 860px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+  }
+</style>

@@ -1,0 +1,216 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Wave from "../components/Wave.astro";
+
+const featured = [
+  { img: "/images/products/white-coffee.jpg", name: "White Coffee 2-in-1", cat: "White Coffee" },
+  { img: "/images/products/cappuccino.jpg", name: "Cappuccino", cat: "White Coffee" },
+  { img: "/images/products/cereal-original.jpg", name: "Original Cereal", cat: "Cereal" },
+  { img: "/images/products/milk-tea.jpg", name: "White Coffee Milk Tea", cat: "Milk Tea" },
+];
+
+const quality = [
+  { k: "Since 1995", v: "Nearly three decades crafting premix beverages in Ipoh." },
+  { k: "In-house R&D", v: "Our own R&D team and machinery develop every new blend." },
+  { k: "OEM & private label", v: "Your recipe and brand, manufactured reliably at volume." },
+];
+---
+
+<Layout path="/">
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy" data-hero-stagger>
+        <span class="eyebrow">Premix Coffee &amp; Cereal · Ipoh, Malaysia</span>
+        <h1>As fresh as <span class="accent">our coffee</span>.</h1>
+        <p class="hero-lead">
+          Combywide Marketing crafts Ipoh-style white coffee, cappuccino, mocha and wholesome
+          cereal drinks — convenient premixes made in Malaysia since 1995.
+        </p>
+        <div class="hero-actions">
+          <a href="/products" class="btn btn-primary">Explore products
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="/about" class="btn btn-ghost">Our story</a>
+        </div>
+        <p class="hero-trust">White Coffee · Cappuccino · Mocha · <strong>Cereal Drinks</strong> — since 1995.</p>
+      </div>
+
+      <div class="hero-art" data-hero-art>
+        <div class="hero-img-main">
+          <img src="/images/products/white-coffee.jpg" alt="Combywide White Coffee" width="620" height="520" />
+        </div>
+        <figure class="hero-float">
+          <img src="/images/products/cereal-original.jpg" alt="Combywide Original Cereal" width="280" height="200" />
+          <figcaption>Wholesome cereal drinks</figcaption>
+        </figure>
+        <div class="hero-badge">
+          <span>Since<br><strong>1995</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TICKER ============ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>White Coffee</span><i></i><span>Cappuccino</span><i></i><span>Mocha</span><i></i>
+      <span>Hazelnut</span><i></i><span>Cereal Drinks</span><i></i><span>Milk Tea</span><i></i>
+      <span>White Coffee</span><i></i><span>Cappuccino</span><i></i><span>Mocha</span><i></i>
+      <span>Hazelnut</span><i></i><span>Cereal Drinks</span><i></i><span>Milk Tea</span><i></i>
+    </div>
+  </div>
+
+  <!-- ============ FEATURED ============ -->
+  <section class="featured">
+    <div class="container">
+      <header class="sec-head row" data-reveal>
+        <div>
+          <span class="eyebrow">Best sellers</span>
+          <h2 class="section-title">Made to be enjoyed</h2>
+        </div>
+        <a href="/products" class="btn btn-ghost">All products
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </header>
+
+      <div class="prod-grid" data-reveal-group>
+        {featured.map((p) => (
+          <a href="/products" class="prod-card">
+            <div class="prod-media"><img src={p.img} alt={p.name} loading="lazy" /></div>
+            <div class="prod-info">
+              <span class="prod-cat">{p.cat}</span>
+              <h3>{p.name}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY ============ -->
+  <section class="quality">
+    <div class="container quality-grid">
+      <div class="quality-media" data-reveal>
+        <div class="quality-frame">
+          <img src="/images/factory.jpg" alt="Combywide factory in Ipoh" width="560" height="600" loading="lazy" data-parallax="-26" />
+        </div>
+        <div class="quality-stat" data-parallax="22">
+          <span class="num"><span data-count="29">0</span>+</span>
+          <span class="lbl">years brewing<br>in Ipoh, Perak</span>
+        </div>
+      </div>
+      <div class="quality-copy" data-reveal>
+        <span class="eyebrow">Why Combywide</span>
+        <h2 class="section-title">From a 1995 milestone to your cup</h2>
+        <p class="section-lead">Established in 1995, Combywide adapted, grew and reinvested — building an experienced R&D team and new machinery to keep developing premix beverages people love.</p>
+        <ul class="quality-list">
+          {quality.map((q) => (
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>
+              <div><strong>{q.k}</strong><span>{q.v}</span></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta ribbon">
+    <Wave side="top" />
+    <Wave side="bottom" />
+    <div class="container ribbon-inner">
+      <div class="cta-box" data-reveal>
+        <div class="cta-copy">
+          <h2>Stock Combywide, or build your blend.</h2>
+          <p>Retail, wholesale, OEM and export — tell us what you need and our Ipoh team will take it from there.</p>
+        </div>
+        <a href="/contact" class="btn btn-primary">Get in touch
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .accent { color: var(--red); }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 72px 0 90px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+  .hero-copy h1 { font-size: clamp(2.9rem, 6vw, 4.6rem); margin: 22px 0 22px; letter-spacing: -0.04em; }
+  .hero-lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 510px; line-height: 1.65; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 32px 0 26px; }
+  .hero-trust { font-size: .95rem; color: var(--ink-soft); }
+  .hero-trust strong { color: var(--ink); font-weight: 700; }
+
+  .hero-art { position: relative; }
+  .hero-img-main { border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 6 / 5; background: var(--cream); display: grid; place-items: center; }
+  .hero-img-main img { width: auto; height: 92%; object-fit: contain; }
+  .hero-float { position: absolute; left: -28px; bottom: -28px; width: 200px; background: #fff; border-radius: 16px; padding: 10px; box-shadow: var(--shadow-md); }
+  .hero-float img { width: 100%; border-radius: 9px; aspect-ratio: 4/4.2; object-fit: contain; background: var(--cream); }
+  .hero-float figcaption { font-size: .76rem; font-weight: 600; color: var(--ink-soft); padding: 8px 4px 4px; }
+  .hero-badge { position: absolute; top: -22px; right: -18px; display: flex; align-items: center; gap: 10px; background: var(--navy); color: #fff; padding: 12px 16px; border-radius: 14px; box-shadow: var(--shadow-md); }
+  .hero-badge span { font-family: var(--font-display); font-size: .72rem; line-height: 1.1; letter-spacing: .04em; }
+  .hero-badge strong { font-size: 1.05rem; color: var(--gold); }
+
+  /* ---------- TICKER ---------- */
+  .ticker { background: var(--navy); overflow: hidden; padding: 15px 0; }
+  .ticker-track { display: flex; align-items: center; gap: 28px; white-space: nowrap; width: max-content; animation: scroll 30s linear infinite; }
+  .ticker-track span { font-family: var(--font-display); font-weight: 600; font-size: .92rem; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.92); }
+  .ticker-track i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); display: inline-block; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ---------- shared section header ---------- */
+  .featured { padding: 100px 0 0; }
+  .sec-head { margin-bottom: 48px; }
+  .sec-head.row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+
+  /* ---------- FEATURED ---------- */
+  .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+  .prod-card { display: block; }
+  .prod-media { aspect-ratio: 4/4.4; overflow: hidden; border-radius: 24px; background: #fff; border: 1px solid var(--line); box-shadow: 0 0 0 rgba(42,31,22,0); transition: transform .4s cubic-bezier(.2,.8,.25,1), box-shadow .4s ease; }
+  .prod-media img { width: 100%; height: 100%; object-fit: contain; padding: 16px; transition: transform .6s cubic-bezier(.2,.8,.25,1); }
+  .prod-card:hover .prod-media { transform: translateY(-12px); box-shadow: 0 26px 44px rgba(192,57,43,.16); }
+  .prod-card:hover .prod-media img { transform: scale(1.06); }
+  .prod-info { padding: 18px 6px 0; }
+  .prod-cat { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+  .prod-info h3 { font-size: 1.05rem; margin-top: 6px; letter-spacing: -0.02em; transition: color .25s ease; }
+  .prod-card:hover .prod-info h3 { color: var(--red); }
+
+  /* ---------- WHY ---------- */
+  .quality { padding: 110px 0 0; }
+  .quality-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: center; }
+  .quality-media { position: relative; }
+  .quality-frame { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 14/15; box-shadow: var(--shadow-md); }
+  .quality-frame img { width: 100%; height: 114%; object-fit: cover; object-position: center; }
+  .quality-stat { position: absolute; right: -22px; bottom: 32px; z-index: 2; background: var(--red); color: #fff; border-radius: 16px; padding: 18px 22px; box-shadow: 0 18px 40px rgba(192,57,43,.3); display: flex; align-items: center; gap: 12px; }
+  .quality-stat .num { font-family: var(--font-display); font-weight: 700; font-size: 2.4rem; line-height: 1; }
+  .quality-stat .lbl { font-size: .82rem; line-height: 1.25; opacity: .95; }
+  .quality-copy .section-title { font-size: clamp(1.8rem, 3.6vw, 2.7rem); }
+  .quality-list { margin-top: 28px; display: grid; gap: 16px; }
+  .quality-list li { display: flex; gap: 14px; align-items: flex-start; }
+  .quality-list svg { width: 22px; height: 22px; color: var(--red); flex-shrink: 0; margin-top: 2px; }
+  .quality-list strong { display: block; font-family: var(--font-display); font-size: 1.02rem; margin-bottom: 2px; }
+  .quality-list span { color: var(--ink-soft); font-size: .96rem; }
+
+  /* ---------- CTA ---------- */
+  .cta-box { display: flex; justify-content: space-between; align-items: center; gap: 36px; flex-wrap: wrap; }
+  .cta-box h2 { color: #fff; font-size: clamp(1.8rem, 3.6vw, 2.7rem); margin-bottom: 12px; }
+  .cta-box p { color: rgba(255,255,255,.82); max-width: 460px; }
+  .cta-box .btn { flex-shrink: 0; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 70px; }
+    .hero-art { max-width: 520px; }
+    .quality-grid { grid-template-columns: 1fr; gap: 40px; }
+    .quality-media { max-width: 460px; }
+    .prod-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .prod-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  }
+</style>
