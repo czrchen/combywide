@@ -4,11 +4,11 @@
    =========================================================== */
 
 :root {
-  /* Brand */
-  --navy:       #3A2417;   /* deep coffee brown (dark sections) */
-  --navy-2:     #4E3220;
-  --red:        #C0392B;   /* Combywide red — primary CTA/accent */
-  --red-deep:   #9E2D22;
+  /* Brand — Lee Kum Kee red + gold (coffee warmth) */
+  --navy:       #5A1218;   /* deep maroon (dark sections) */
+  --navy-2:     #781A1E;
+  --red:        #BE1E2D;   /* LKK red — primary CTA/accent */
+  --red-deep:   #9C1726;
   --gold:       #C59D5F;   /* coffee gold/tan accent */
 
   /* Surface + text */
