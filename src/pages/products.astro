@@ -9,17 +9,17 @@ const filters = [
 ];
 
 const products = [
-  { cat: "coffee", name: "White Coffee 2-in-1", img: "/images/products/white-coffee.jpg" },
-  { cat: "coffee", name: "White Coffee Cane Sugar", img: "/images/products/cane-sugar.jpg" },
-  { cat: "coffee", name: "White Coffee Cappuccino", img: "/images/products/cappuccino.jpg" },
-  { cat: "coffee", name: "White Coffee Mocha", img: "/images/products/mocha.jpg" },
-  { cat: "coffee", name: "White Coffee Hazelnut", img: "/images/products/hazelnut.jpg" },
-  { cat: "coffee", name: "White Coffee Rich", img: "/images/products/rich.jpg" },
-  { cat: "cereal", name: "Original Cereal", img: "/images/products/cereal-original.jpg" },
-  { cat: "cereal", name: "Cereal with Oat", img: "/images/products/cereal-oat.jpg" },
-  { cat: "cereal", name: "Cereal with Brown Rice & Oat", img: "/images/products/cereal-brown-rice.jpg" },
-  { cat: "cereal", name: "Cereal with Spirulina", img: "/images/products/cereal-spirulina.jpg" },
-  { cat: "tea", name: "White Coffee Milk Tea", img: "/images/products/milk-tea.jpg" },
+  { cat: "coffee", name: "White Coffee 2-in-1", img: "/images/products/white-coffee.jpg", desc: "Ipoh white coffee and creamer, no added sugar." },
+  { cat: "coffee", name: "White Coffee Cane Sugar", img: "/images/products/cane-sugar.jpg", desc: "White coffee sweetened with natural cane sugar." },
+  { cat: "coffee", name: "White Coffee Cappuccino", img: "/images/products/cappuccino.jpg", desc: "Frothy cappuccino-style white coffee premix." },
+  { cat: "coffee", name: "White Coffee Mocha", img: "/images/products/mocha.jpg", desc: "White coffee with a rich chocolate twist." },
+  { cat: "coffee", name: "White Coffee Hazelnut", img: "/images/products/hazelnut.jpg", desc: "Smooth white coffee with fragrant hazelnut." },
+  { cat: "coffee", name: "White Coffee Rich", img: "/images/products/rich.jpg", desc: "Extra-bold white coffee for a fuller cup." },
+  { cat: "cereal", name: "Original Cereal", img: "/images/products/cereal-original.jpg", desc: "Wholesome multi-grain cereal drink." },
+  { cat: "cereal", name: "Cereal with Oat", img: "/images/products/cereal-oat.jpg", desc: "Nutritious cereal blend boosted with oats." },
+  { cat: "cereal", name: "Cereal with Brown Rice & Oat", img: "/images/products/cereal-brown-rice.jpg", desc: "Hearty brown rice and oat cereal drink." },
+  { cat: "cereal", name: "Cereal with Spirulina", img: "/images/products/cereal-spirulina.jpg", desc: "Cereal drink enriched with spirulina." },
+  { cat: "tea", name: "White Coffee Milk Tea", img: "/images/products/milk-tea.jpg", desc: "White coffee meets creamy milk tea." },
 ];
 const labels: Record<string, string> = { coffee: "White Coffee", cereal: "Cereal", tea: "Milk Tea" };
 ---
@@ -46,12 +46,20 @@ const labels: Record<string, string> = { coffee: "White Coffee", cereal: "Cereal
 
       <div class="prod-grid" data-reveal-group>
         {products.map((p) => (
-          <article class="pcard" data-cat={p.cat}>
-            <div class="pcard-media">
-              <img src={p.img} alt={p.name} loading="lazy" width="317" height="400" />
-              <span class="pcard-tag">{labels[p.cat]}</span>
+          <article class="pcard" data-cat={p.cat} tabindex="0">
+            <div class="pcard-flip">
+              <div class="pcard-face pcard-front">
+                <div class="pcard-media"><img src={p.img} alt={p.name} loading="lazy" width="317" height="400" /><span class="pcard-tag">{labels[p.cat]}</span></div>
+                <h3>{p.name}</h3>
+                <span class="flip-hint">Hover for details ↻</span>
+              </div>
+              <div class="pcard-face pcard-back">
+                <span class="back-cat">{labels[p.cat]}</span>
+                <h3>{p.name}</h3>
+                <p>{p.desc}</p>
+                <span class="flip-hint light">↩ flip back</span>
+              </div>
             </div>
-            <div class="pcard-body"><h3>{p.name}</h3></div>
           </article>
         ))}
       </div>
@@ -76,24 +84,25 @@ const labels: Record<string, string> = { coffee: "White Coffee", cereal: "Cereal
   .filter-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; }
 
   .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-  .pcard { display: block; }
+  .pcard { perspective: 1300px; outline: none; cursor: pointer; }
   .pcard.is-hidden { display: none; }
-  .pcard-media {
-    position: relative; aspect-ratio: 4/4.4; overflow: hidden; border-radius: 22px; background: #fff;
-    border: 1px solid var(--line); box-shadow: 0 0 0 rgba(42,31,22,0);
-    transition: transform .4s cubic-bezier(.2,.8,.25,1), box-shadow .4s ease;
-  }
-  .pcard-media img { width: 100%; height: 100%; object-fit: contain; padding: 14px; transition: transform .6s cubic-bezier(.2,.8,.25,1); }
-  .pcard-tag {
-    position: absolute; left: 12px; top: 12px; font-size: .68rem; font-weight: 700; letter-spacing: .04em;
-    text-transform: uppercase; color: var(--red-deep); background: var(--cream);
-    padding: 5px 10px; border-radius: 999px;
-  }
-  .pcard:hover .pcard-media { transform: translateY(-10px); box-shadow: 0 24px 40px rgba(192,57,43,.18); }
-  .pcard:hover .pcard-media img { transform: scale(1.05); }
-  .pcard-body { padding: 16px 4px 0; }
-  .pcard-body h3 { font-size: .98rem; letter-spacing: -0.01em; line-height: 1.35; transition: color .25s ease; }
-  .pcard:hover .pcard-body h3 { color: var(--red); }
+  .pcard-flip { position: relative; width: 100%; height: 360px; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.8,.25,1); }
+  .pcard:hover .pcard-flip, .pcard:focus-within .pcard-flip { transform: rotateY(180deg); }
+  .pcard-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
+  .pcard-front { background: #fff; border: 1px solid var(--line); padding: 14px; }
+  .pcard-front .pcard-media { flex: 1; min-height: 0; position: relative; background: #fff; border-radius: 16px; overflow: hidden; }
+  .pcard-front .pcard-media img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+  .pcard-ph { width: 100%; height: 100%; display: grid; place-items: center; text-align: center; padding: 18px; background: linear-gradient(135deg, var(--red), var(--navy)); }
+  .pcard-ph span { color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 1rem; opacity: .95; }
+  .pcard-tag { position: absolute; left: 10px; top: 10px; font-size: .66rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--red-deep); background: var(--cream); padding: 5px 10px; border-radius: 999px; z-index: 1; }
+  .pcard-front h3 { font-size: .98rem; line-height: 1.35; margin-top: 12px; }
+  .flip-hint { font-size: .66rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-top: 6px; }
+  .flip-hint.light { color: rgba(255,255,255,.7); margin-top: 14px; }
+  .pcard-back { background: var(--navy); color: #fff; transform: rotateY(180deg); border-top: 4px solid var(--red); padding: 26px 22px; justify-content: center; }
+  .back-cat { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .pcard-back h3 { color: #fff; font-size: 1.2rem; line-height: 1.25; margin: 0 0 10px; }
+  .pcard-back p { color: rgba(255,255,255,.84); font-size: .92rem; line-height: 1.5; }
+  @media (prefers-reduced-motion: reduce) { .pcard-flip { transition: none; } }
   .no-results { text-align: center; color: var(--ink-soft); padding: 40px 0; font-weight: 600; }
 
   .oem-box { display: flex; justify-content: space-between; align-items: center; gap: 36px; flex-wrap: wrap; }
