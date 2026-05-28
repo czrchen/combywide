@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Wave from "../components/Wave.astro";
 
 const filters = [
   { key: "all", label: "All Products" },
@@ -29,7 +28,7 @@ const labels: Record<string, string> = { coffee: "White Coffee", cereal: "Cereal
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow" data-reveal>Our products</span>
-      <h1 class="page-title" data-reveal>Premix coffee &amp; cereal</h1>
+      <h1 class="page-title" data-split>Premix coffee &amp; cereal</h1>
       <p class="page-lead" data-reveal>
         Ipoh-style white coffee, cappuccino, mocha and wholesome cereal drinks — all available as
         convenient 2-in-1 and 3-in-1 premixes. Filter by category to explore.
@@ -57,22 +56,6 @@ const labels: Record<string, string> = { coffee: "White Coffee", cereal: "Cereal
         ))}
       </div>
       <p class="no-results" id="no-results" hidden>No products in this category.</p>
-    </div>
-  </section>
-
-  <section class="oem ribbon">
-    <Wave side="top" />
-    <Wave side="bottom" />
-    <div class="container ribbon-inner">
-      <div class="oem-box" data-reveal>
-        <div class="oem-copy">
-          <h2>Wholesale, OEM & export</h2>
-          <p>Looking to stock Combywide, develop a private-label premix, or order in volume? Our R&amp;D team and Ipoh facility are ready to help you grow your brand.</p>
-        </div>
-        <a href="/contact" class="btn btn-primary">Enquire now
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
     </div>
   </section>
 </Layout>
