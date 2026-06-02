@@ -4,9 +4,10 @@ import PageHeader from "../components/PageHeader.astro";
 ---
 
 <Layout path="/products" title="Products — Combywide Marketing Sdn Bhd">
-  <PageHeader eyebrow={"Our products"} title={"Premix coffee & cereal"} subtitle={"Ipoh-style white coffee, cappuccino, mocha and wholesome cereal drinks \u2014 all available as convenient 2-in-1 and 3-in-1 premixes. Filter by category to explore."} />
+  <PageHeader eyebrow={"Our products"} title={"Our products"} subtitle={""} />
 
-  <section class="cat" style="--c:var(--red)">
+
+  <section class="cat" data-cat="c0" style="--c:var(--red)">
     <div class="container">
       <header class="cat-head" data-reveal>
         <span class="cat-bar"></span>
@@ -108,7 +109,7 @@ import PageHeader from "../components/PageHeader.astro";
     </div>
   </section>
 
-  <section class="cat" style="--c:var(--navy)">
+  <section class="cat" data-cat="c1" style="--c:var(--navy)">
     <div class="container">
       <header class="cat-head" data-reveal>
         <span class="cat-bar"></span>
@@ -180,7 +181,7 @@ import PageHeader from "../components/PageHeader.astro";
     </div>
   </section>
 
-  <section class="cat" style="--c:var(--gold)">
+  <section class="cat" data-cat="c2" style="--c:var(--gold)">
     <div class="container">
       <header class="cat-head" data-reveal>
         <span class="cat-bar"></span>
@@ -210,6 +211,10 @@ import PageHeader from "../components/PageHeader.astro";
 </Layout>
 
 <style>
+  .prod-filter { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 44px 28px 0; max-width: var(--maxw); margin: 0 auto; }
+  .pf-tab { font-family: var(--font-display); font-weight: 600; font-size: .9rem; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--white, #fff); color: var(--ink-soft); cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+  .pf-tab:hover { border-color: var(--ink); color: var(--ink); }
+  .pf-tab.active { background: var(--red); color: #fff; border-color: var(--red); }
   .cat { padding: 50px 0 0; }
   .cat:first-of-type { padding-top: 70px; }
   .cat:last-of-type { padding-bottom: 100px; }
@@ -237,3 +242,4 @@ import PageHeader from "../components/PageHeader.astro";
   @media (max-width: 900px) { .cat-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .cat-grid { grid-template-columns: 1fr 1fr; gap: 14px; } }
 </style>
+
