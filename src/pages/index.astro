@@ -20,37 +20,18 @@ const quality = [
 
 <Layout path="/">
   <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy" data-hero-stagger>
-        <span class="eyebrow">Premix Coffee &amp; Cereal · Ipoh, Malaysia</span>
-        <h1 data-split>As fresh as our coffee.</h1>
-        <p class="hero-lead">
-          Combywide Marketing crafts Ipoh-style white coffee, cappuccino, mocha and wholesome
-          cereal drinks — convenient premixes made in Malaysia since 1995.
-        </p>
-        <div class="hero-actions">
+  <section class="hero" style="background-image:url(/images/hero/hero-bg.png)">
+    <div class="container hero-inner" data-hero-stagger>
+      <span class="eyebrow eyebrow-light">Premix Coffee &amp; Cereal · Ipoh, Malaysia</span>
+      <h1 data-split>As fresh as our coffee.</h1>
+      <div class="hero-actions">
           <a href="/products" class="btn btn-primary">Explore products
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="/about" class="btn btn-ghost">Our story</a>
-        </div>
-        <p class="hero-trust">White Coffee · Cappuccino · Mocha · <strong>Cereal Drinks</strong> — since 1995.</p>
-      </div>
-
-      <div class="hero-art" data-hero-art>
-        <div class="hero-img-main">
-          <img src="/images/products/white-coffee.jpg" alt="Combywide White Coffee" width="620" height="520" />
-        </div>
-        <figure class="hero-float">
-          <img src="/images/products/cereal-original.jpg" alt="Combywide Original Cereal" width="280" height="200" />
-          <figcaption>Wholesome cereal drinks</figcaption>
-        </figure>
-        <div class="hero-badge">
-          <span>Since<br><strong>1995</strong></span>
-        </div>
+          <a href="/about" class="btn btn-light">Our story</a>
       </div>
     </div>
+    <div class="hero-curve"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,46 C320,116 1040,4 1440,64 L1440,110 L0,110 Z" fill="var(--paper)"/></svg></div>
   </section>
 
   <!-- ============ TICKER ============ -->
@@ -235,4 +216,21 @@ const quality = [
     .pin-track { padding: 0 20px; }
     .pin-card { width: 78vw; max-width: 320px; scroll-snap-align: center; }
   }
+
+  /* === wisechip-hero (injected) === */
+  .hero { position: relative; padding: 0; background-size: cover; background-position: center; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(0,0,0,.52), rgba(0,0,0,.18) 55%, transparent); }
+  .hero-inner { position: relative; z-index: 2; padding: 150px 0 200px; max-width: 760px; }
+  .hero-inner .eyebrow, .hero-inner .eyebrow::before { color: var(--gold); }
+  .hero-inner .eyebrow::before { background: var(--gold); }
+  .hero-inner h1 { color: #fff; font-size: clamp(2.6rem, 6vw, 5rem); margin: 18px 0 24px; letter-spacing: -0.04em; max-width: 14ch; text-shadow: 0 4px 40px rgba(0,0,0,.35); }
+  .hero-inner h1 .split-word > span[style] { color: var(--gold) !important; }
+  .hero-inner .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 0; }
+  .btn-light { background: #fff; color: var(--ink); }
+  .btn-light::before { background: var(--gold); }
+  .btn-light:hover { color: var(--ink); }
+  .hero-curve { position: absolute; left: 0; right: 0; bottom: -1px; z-index: 3; line-height: 0; pointer-events: none; }
+  .hero-curve svg { width: 100%; height: clamp(56px, 7vw, 110px); display: block; }
+  @media (max-width: 700px) { .hero-inner { padding: 120px 0 150px; } }
+
 </style>
